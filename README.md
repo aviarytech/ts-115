@@ -1,4 +1,4 @@
-# BRC-1011 - Layer One Verifiable Assets
+# TS-115 Requirements
 
 ## Development
 
