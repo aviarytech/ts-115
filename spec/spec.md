@@ -1,5 +1,10 @@
 # TS-115 Requirements
 
+Participate:
+~ [GitHub repo](https://github.com/aviarytech/ts-115)
+~ [File a bug](https://github.com/aviarytech/ts-115/issues)
+~ [Commit history](https://github.com/aviarytech/ts-115/commits/main)
+
 ## Issuer Component
 
 ### Requirements
