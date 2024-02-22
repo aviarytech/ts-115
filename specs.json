@@ -1,0 +1,7 @@
+{
+  "specs": [{
+    "title": "TS-115 Requirements",
+    "spec_directory": "./spec",
+    "output_path": "./dist"
+  }]
+}
