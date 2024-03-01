@@ -5,15 +5,102 @@ Participate:
 ~ [File a bug](https://github.com/aviarytech/ts-115/issues)
 ~ [Commit history](https://github.com/aviarytech/ts-115/commits/main)
 
-## Issuer Component
+# Introduction
 
-### Requirements
+The Technical Specification for Digital Credentials and Digital Trust Services, developed by the [Digital Credentials Consortium (DGC)](https://dgc-cgn.org/standards/find-a-standard/standards-in-digital-credentials/digital-credentials/), sets a comprehensive framework for issuing, storing, and verifying digital credentials. Aimed at revolutionizing the way educational and professional qualifications are recognized across digital platforms, this standard ensures interoperability, security, and privacy. By adopting this standard, organizations can facilitate seamless verification processes, enhance the credibility of digital credentials, and support the mobility of learners and professionals in a global landscape. This document outlines the requirements and best practices established by the DGC to empower stakeholders in the digital credential ecosystem.
+
+# Components
+
+## Digital Credentials Requirements
+
+[[def: RDC1]]
+~ The digital credential shall be composed of three components:
+
+  a. Credential metadata: One or more credential attributes that describe the properties or characteristics of the credential and cryptography method used;
+
+  b. Credential payload: A set of one or more claims asserted about one or more Subjects; and
+  
+  c. Credential proofs: One or more methods or mechanisms (typically cryptographic) that are used to verify that the issuer authored the digital credential and that the digital credential has not been tampered with.
+
+  Digital credentials shall:
+
+  a. be presentable;
+
+  b. contain claims about one or more Subjects;
+
+  c. identify the Issuer;
+
+  d. define a validity period;
+
+  e. be tamper-evident and unique within a specified population;
+
+  f. be machine readable; and
+
+  g. be revocable, and where applicable, contain revocation method details.
+
+  Digital credentials should:
+
+  a. be suspendible; and
+
+  b. be recoverable.
+
+[[def: RDC2]]
+~ The authorship of a digital credential shall be cryptographically verifiable.
+
+[[def: RDC3]]
+~ It shall be demonstrated that the digital credential can be stored within and presented from a minimum of two implementations.
+
+[[def: RDC4]]
+~ It shall be demonstrated that the digital credential can be cryptographically verified using a minimum of two implementations.
+
+[[def: RDC5]]
+~ The digital credential shall be bound to one or more authenticators.
+
+## Data Protection Requirements
+
+[[def: RDP1]]
+~ All data shall be protected during data-in-transit and data-at-rest in accordance with [Cryptographic Module Requirements](#cryptographic-module-requirements).
+
+::: note Basic Note
+An organization should consider the use of CAN/CIOSC 100-1, Data governance – Part 1: Data-centric security, for the purposes of protecting the digital credential, and/or the issuer, holder and verifier component data at-rest, in-transit, and in-use.
+:::
+
+[[def: RDP2]]
+~ All data held in device-based or cloud-based storage shall be encrypted in accordance with [Cryptographic Module Requirements](#cryptographic-module-requirements)
+
+[[def: RDP3]]
+~ Cloud-based storage shall be implemented in accordance with ISO/IEC 27018 to protect personally identifiable information (PII) and ISO/IEC 29100 to protect personal information (PI).
+
+## Cryptographic Module Requirements
+
+[[def: RC1]]
+~ Data shall be encrypted using a Cryptographic Module Validation Program – certified encryption module.
+
+[[def: RC2]]
+~ Data should be protected using CAN/CIOSC100-1, Data governance – Part 1: Data-centric security.
+
+[[def: RC3]]
+~ Data-in-transit protection shall be provided using TLS1.2, or subsequent versions.
+
+[[def: RC4]]
+~ Cryptographic algorithms shall be compliant with the recommendations for Protected B information in the CSE publication Cryptographic Algorithms for Unclassified, Protected A, and Protected B Information and Guidance on Securely Configuring Network Protocols (ITSP.40.111
+and ITSP.40.062).
+
+[[def: RC5]]
+~ The cryptographic module shall ensure support for quantum-safe cryptography using cryptographic algorithms, cryptographic parameter sizes, key lengths and crypto periods which are configurable, and which can be updated within protocols, applications and services to be consistent with transition guidance in time to meet specified transition dates.
+
+## Decentralized Identifier Requirements
+
+[[def: RDID1]]
+~ Decentralized Identifiers shall be implemented in accordance with a published international specification and the [Cryptographic Module Requirements](#cryptographic-module-requirements) of this Specification. (e.g., Decentralized Identifiers (DIDs) v1.0 W3C Recommendation).
+
+## Issuer Component Requirements
 
 [[def: RI1]]
 ~ The Issuer Component shall identify the Issuer of the digital credential.
 
 [[def: RI2]]
-~ The Issuer Component shall be able to create a decentralized identifier for the Issuer, in accordance with Section 8.
+~ The Issuer Component shall be able to create a decentralized identifier for the Issuer, in accordance with [Decentralized Identifier Requirements](#decentralized-identifier-requirements).
 
 ::: note Basic Note
 This specification is intended to be technology framework agnostic, and not prescriptive regarding the decentralized identifiers that can be used beyond narrowing decentralized identifiers to those covered by a published international specification.
@@ -131,9 +218,7 @@ A defined validity period may be open-ended. For example, a period may have no s
 
   b. the initiating party for the recovery action.
 
-## Holder Component
-
-### Requirements
+## Holder Component Requirements
 
 [[def: RH1]]:
 ~ The Holder Component shall process digital credentials in accordance with the general characteristics specified in Subsection 5.1 of this Specification.
@@ -228,9 +313,7 @@ Examples include pairwise decentralized identifiers, other decentralized identif
 [[def: RH23]]
 ~ The Holder Component shall have the capability to notify the Holder of any changes to the digital credential.
 
-## Verifier Component
-
-### Requirements
+## Verifier Component Requirements
 
 [[def: RV1]]
 ~ The Verifier Component shall process digital credentials, in accordance with the general characteristics specified in Subsection 5.1 of this Specification.
@@ -283,9 +366,7 @@ Examples of acceptable methods include cryptographic methods or examination by a
 [[def: RV13]]
 ~  The Verifier Component shall indicate an authentication failure when a digital credential is suspended or revoked, or when digital credential misuse or compromise is detected.
 
-## Digital Trust Registry Component
-
-### Requirements
+## Digital Trust Registry Component Requirements
 
 [[def: RTR1]]
 ~ The Digital Trust Registry Component shall have the capability to store keys and other relevant data needed for the issuance and verification of digital credentials, in accordance with Section 6 of this Specification.
